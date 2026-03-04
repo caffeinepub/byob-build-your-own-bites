@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* BYOB Street Food Brand Tokens - Dark theme as primary */
+    --background: 0.11 0.015 30;
+    --foreground: 0.97 0.01 90;
+    --card: 0.16 0.02 30;
+    --card-foreground: 0.97 0.01 90;
+    --popover: 0.16 0.02 30;
+    --popover-foreground: 0.97 0.01 90;
+    /* Primary: Vibrant Yellow-Orange */
+    --primary: 0.78 0.18 75;
+    --primary-foreground: 0.11 0.015 30;
+    /* Secondary: Bold Red */
+    --secondary: 0.55 0.22 25;
+    --secondary-foreground: 0.97 0.01 90;
+    --muted: 0.22 0.02 30;
+    --muted-foreground: 0.65 0.04 60;
+    /* Accent: Warm Orange */
+    --accent: 0.68 0.20 45;
+    --accent-foreground: 0.11 0.015 30;
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.97 0.01 90;
+    --border: 0.25 0.03 40;
+    --input: 0.22 0.02 35;
+    --ring: 0.78 0.18 75;
+    --chart-1: 0.78 0.18 75;
+    --chart-2: 0.55 0.22 25;
+    --chart-3: 0.68 0.20 45;
+    --chart-4: 0.72 0.16 60;
+    --chart-5: 0.60 0.24 35;
+    --sidebar: 0.13 0.018 30;
+    --sidebar-foreground: 0.97 0.01 90;
+    --sidebar-primary: 0.78 0.18 75;
+    --sidebar-primary-foreground: 0.11 0.015 30;
+    --sidebar-accent: 0.22 0.02 30;
+    --sidebar-accent-foreground: 0.97 0.01 90;
+    --sidebar-border: 0.25 0.03 40;
+    --sidebar-ring: 0.78 0.18 75;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Bricolage Grotesque', 'Outfit', sans-serif;
+  }
+}
+
+/* Floating WhatsApp pulse animation */
+@keyframes wa-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 oklch(0.55 0.22 150 / 0.7); }
+  50% { transform: scale(1.05); box-shadow: 0 0 0 12px oklch(0.55 0.22 150 / 0); }
+}
+
+.wa-float-btn {
+  animation: wa-pulse 2.5s ease-in-out infinite;
+}
+
+/* Gradient text utility */
+.text-gradient-fire {
+  background: linear-gradient(135deg, oklch(0.78 0.18 75), oklch(0.68 0.20 45), oklch(0.55 0.22 25));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, oklch(0.90 0.18 85), oklch(0.78 0.18 75));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Instagram gradient button */
+.instagram-gradient {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+/* Card hover effect */
+.gallery-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 20px 40px oklch(0 0 0 / 0.5);
+}
+
+/* Menu card shine */
+.menu-card-main {
+  background: linear-gradient(135deg, oklch(0.16 0.02 30), oklch(0.20 0.03 40));
+  border: 1px solid oklch(0.78 0.18 75 / 0.3);
+}
+
+.menu-card-main:hover {
+  border-color: oklch(0.78 0.18 75 / 0.7);
+  box-shadow: 0 0 30px oklch(0.78 0.18 75 / 0.15);
+}
+
+/* Step card */
+.step-card {
+  background: linear-gradient(135deg, oklch(0.16 0.02 30), oklch(0.18 0.025 35));
+  border: 1px solid oklch(0.25 0.03 40);
+}
+
+/* Noise texture overlay */
+.noise-bg {
+  position: relative;
+}
+.noise-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.04;
+  z-index: 0;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(0.11 0.015 30);
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.78 0.18 75 / 0.5);
+  border-radius: 3px;
+}
